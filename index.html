@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Promo Banner</title>
+  <style>
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('src/fonts/SF-Pro-Display-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SF Pro Heavy';
+      src: url('src/fonts/SF-Pro-Display-Heavy.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SF Pro Text';
+      src: url('src/fonts/SFProText-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Roboto';
+      src: url('src/fonts/Roboto-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('src/fonts/SF-Pro-Display-Thin.otf') format('opentype');
+      font-weight: 100;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('src/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'SF Pro Text';
+      src: url('src/fonts/SFProText-Semibold.ttf') format('truetype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+  </style>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background-color: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+  <style>
+    /* iPhone 12 390 × 844 */
+    :root {
+      --mt-app: 64px;
+      --px-app: 16px;
+      --mb-app: 39px;
+      --mt-content: 178px;
+      --color-grey1: rgba(255, 255, 255, 0.3);
+      --color-grey2: rgba(255, 255, 255, 10.16%);
+      --color-black: #070b33;
+      --color-light: #ffffff;
+      --color-light2: #ffffff70;
+
+      --bg-color-primary: var(--color-grey2);
+      --bg-color-primary-active: var(--color-grey1);
+
+      --bg-color-secondary: var(--color-grey1);
+      --bg-color-secondary-active: var(--color-grey2);
+
+      --bg-color-tertiary: var(--color-light);
+      --bg-color-tertiary-active: var(--color-light);
+
+      --btn-height: 56px;
+      --btn-mt: 8px;
+      --btn-mb: 8px;
+      --btn-px: 8px;
+
+      --title-mb: 24px;
+      --title-fz: 42px;
+      --title-lh: 46px;
+
+      --toolbar-carts-gap: 6px;
+      --toolbar-carts-template-width: 110px;
+      --toolbar-carts-mb: 34px;
+      --toolbar-padding-x: 8px;
+
+      --cart-px: 8px;
+      --cart-pb: 12px;
+      --cart-height: 146px;
+      --cart-radius: 16px;
+      --cart-fz: 12px;
+
+      --offer-pricing-width: 32%;
+      --offer-label-width: 117px;
+      --offer-titles-mb: 0;
+      --offer-fz: 16px;
+
+      --footer-margin-top: 12px;
+      --footer-margin-x: -14.5px;
+      --footer-link-fz: 13px;
+
+      color: var(--color-light);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Heavy", "SF Pro Display", "SF Pro Text", sans-serif;
+    }
+
+    .btn {
+      font-family: "SF Pro Text";
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 1px solid var(--color-light);
+      border-radius: 100px;
+      background-color: var(--color-light);
+      padding: var(--btn-px) 23px;
+      font-size: 20px;
+      color: var(--color-black);
+      margin-bottom: var(--btn-mb);
+      min-height: var(--btn-height);
+    }
+
+    .btn:last-child {
+      margin-top: calc(var(--btn-mt) * 2);
+      margin-bottom: 0;
+    }
+
+    .btn--primary {
+      border-color: var(--bg-color-primary);
+      background-color: var(--bg-color-primary);
+    }
+
+    .btn--primary:active,
+    .btn--primary:hover {
+      border-color: var(--color-light);
+      background-color: var(--bg-color-primary-active);
+    }
+
+    .btn--primary:active .offer__label,
+    .btn--primary:active .offer__label:before,
+    .btn--primary:hover .offer__label,
+    .btn--primary:hover .offer__label:before {
+      border-color: var(--color-light);
+      background: var(--color-light);
+      color: var(--color-black);
+    }
+
+    .btn--primary:hover .offer__label span {
+      display: none;
+    }
+
+    .btn--secondary {
+      border-color: var(--color-light);
+      background-color: var(--bg-color-secondary);
+    }
+
+    .btn--secondary:active,
+    .btn--secondary:hover {
+      border-color: var(--bg-color-secondary-active);
+      background-color: var(--bg-color-secondary-active);
+    }
+
+    .modal {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      position: relative;
+      background-size: cover;
+      background-position: center top;
+      background-image: url("src/images/bg@1x.webp");
+      background-repeat: no-repeat;
+      padding: 0 var(--px-app);
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .modal {
+        background-image: url("src/images/bg@2x.webp");
+      }
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+      .modal {
+        background-image: url('src/images/bg@3x.webp');
+      }
+    }
+
+    .modal__header {
+      margin-top: var(--mt-app);
+    }
+
+    .modal__close {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .modal__content {
+      margin-top: var(--mt-content);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      position: relative;
+      z-index: 5;
+    }
+
+    .modal__title {
+      font-family: "SF Pro Heavy";
+      font-size: var(--title-fz);
+      font-weight: 900;
+      line-height: var(--title-lh);
+      text-align: center;
+      margin-bottom: var(--title-mb);
+    }
+
+    .toolbar {
+      flex: 1;
+      width: 100%;
+      padding: 0 var(--toolbar-padding-x);
+    }
+
+    .toolbar__carts {
+      display: grid;
+      grid-template-columns: repeat(3, var(--toolbar-carts-template-width));
+      grid-column-gap: var(--toolbar-carts-gap);
+      margin-bottom: var(--toolbar-carts-mb);
+    }
+
+    .toolbar__cart {
+      position: relative;
+      display: flex;
+      border-radius: var(--cart-radius);
+      overflow: hidden;
+      height: var(--cart-height);
+      align-items: end;
+      padding: 0 var(--cart-px) var(--cart-pb);
+      font-size: var(--cart-fz);
+      color: inherit;
+    }
+
+    .toolbar__img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .toolbar__title {
+      font-family: "SF Pro Text";
+      font-weight: 400;
+      position: relative;
+    }
+
+    .offer {
+      font-family: "SF Pro Display";
+      font-weight: 400;
+      justify-content: space-between;
+      font-size: var(--offer-fz);
+      color: var(--color-light2);
+    }
+
+    .offer__titles,
+    .offer__pricing {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .offer__titles {
+      margin-bottom: var(--offer-titles-mb);
+    }
+
+    .offer__title {
+      font-family: "SF Pro Display";
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--color-light);
+    }
+
+    .offer__subtitle {}
+
+    .offer__pricing {
+      min-width: var(--offer-pricing-width);
+    }
+
+    .offer__label {
+      font-family: Roboto;
+      text-transform: uppercase;
+      position: absolute;
+      color: var(--color-light);
+      border-radius: 100px;
+      min-width: var(--offer-label-width);
+      text-align: center;
+      right: 24px;
+      top: -10px;
+      background: linear-gradient(90deg, #bc1fef 0%, #0035ff 100%);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .offer__label:before {
+      position: absolute;
+      content: "";
+      display: block;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: calc(100% + 2px);
+      height: calc(100% + 2px);
+      z-index: -1;
+      background: linear-gradient(to right, #00b5ff 0%, #632af7 53%, #ff96f4 100%);
+      border-radius: inherit;
+    }
+
+    .offer__label span {
+      position: absolute;
+      left: 0;
+      top: 47%;
+      display: block;
+      width: 100%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    .offer__label span:before {
+      content: "";
+      background-image: url("./src/images/li.svg");
+      background-repeat: no-repeat;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      width: 128px;
+      height: 1px;
+      z-index: 1;
+    }
+
+    .offer__label span:after {
+      content: "";
+      background-image: url("./src/images/li2.svg");
+      background-repeat: no-repeat;
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 100%;
+      width: 24.5px;
+      height: calc(var(--btn-height) / 2.015);
+      z-index: 1;
+    }
+
+
+    .modal__footer {
+      margin: var(--footer-margin-top) var(--footer-margin-x) var(--mb-app);
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .footer__link {
+      font-family: "SF Pro Display";
+      font-weight: 100;
+      font-size: var(--footer-link-fz);
+      color: #55535e;
+      text-decoration: underline;
+    }
+
+    :lang(ja) {
+      --btn-px: 1px;
+      --offer-titles-mb: -3px;
+    }
+
+    :lang(de) {
+      --mt-content: 132px;
+    }
+
+    /* iPhone SE  320 × 568 */
+    @media screen and (max-width: 320px) and (max-height: 568px) {
+      :root {
+        --mt-app: 32px;
+        --mt-content: 34px;
+        --px-app: 15px;
+        --toolbar-padding-x: 0;
+        --toolbar-carts-mb: 21px;
+        --btn-mt: 4px;
+        --mb-app: 9px;
+        --title-mb: 13px;
+        --footer-margin-x: -22px;
+        --toolbar-carts-template-width: 94px;
+        --toolbar-carts-gap: 4px;
+        --cart-height: 125px;
+        --cart-radius: 13px;
+        --offer-pricing-width: 33.5%;
+      }
+
+      .modal {
+        background-position-y: -26px;
+      }
+
+      :root :lang(ja) {
+        --title-fz: 38px;
+        --mb-app: 5px;
+        --toolbar-carts-mb: 26px;
+      }
+
+      :root :lang(fr) {
+        --mt-content: 49px;
+        --title-fz: 33px;
+        --title-lh: 40px;
+        --offer-fz: 14px;
+        --footer-link-fz: 12px;
+      }
+
+      :root :lang(de) {
+        --mt-content: 13px;
+        --title-fz: 33px;
+        --title-lh: 40px;
+        --offer-fz: 14px;
+        --footer-link-fz: 12px;
+      }
+
+      :root :lang(pt) {
+        --title-fz: 36px;
+        --title-lh: 40px;
+        --offer-fz: 14px;
+      }
+    }
+
+    /* iPhone 8 375 × 667 */
+    @media screen and (min-width: 375px) and (min-height: 667px) and (max-height: 667px) {
+      :root {
+        --mt-app: 37px;
+        --mt-content: 95px;
+        --btn-mt: 4px;
+        --mb-app: 9px;
+        --title-mb: 16px;
+        --footer-margin-x: -22px;
+
+        --toolbar-carts-template-width: 106px;
+        --toolbar-carts-gap: 4px;
+        --toolbar-padding-x: 8px;
+        --toolbar-carts-mb: 26px;
+
+        --cart-height: 139px;
+        --cart-radius: 13px;
+
+        --offer-pricing-width: 33.5%;
+        --offer-label-width: 119px;
+      }
+
+      .modal {
+        background-position-y: -33px;
+      }
+
+      :root :lang(ja) {
+        --mb-app: 5px;
+        --toolbar-carts-mb: 26px;
+      }
+
+      :root :lang(fr) {
+        --mt-content: 49px;
+      }
+
+      :root :lang(de) {
+        --mt-content: 49px;
+      }
+    }
+
+    /* iPhone 8 Plus 414 × 736 */
+    @media screen and (min-width: 414px) and (max-width: 414px) and (max-height: 736px) {
+      :root {
+        --mt-content: 75px;
+        --mb-app: 23px;
+        --toolbar-carts-template-width: 120px;
+        --cart-height: 159px;
+      }
+
+      :root :lang(de) {
+        --mt-content: 49px;
+      }
+
+      :lang(ja) .offer__label span:after {
+        top: 0;
+      }
+    }
+
+    /* iPhone X  375 × 812 */
+    @media screen and (min-width: 375px) and (min-height: 812px) and (max-height: 812px) {
+
+      :root {
+        --mb-app: 20px;
+        --mt-content: 160px;
+      }
+
+      :lang(ja) .offer__label span:after {
+        top: 0;
+      }
+
+      :root :lang(fr) {
+        --mt-content: 140px;
+      }
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div class="modal" id="modal">
+    <div class="modal__header">
+      <a href="#" aria-label="Close" class="modal__close">
+        <img src="src/images/cross.svg" alt="img-button-close">
+      </a>
+    </div>
+    <div class="modal__content">
+      <h1 class="modal__title" data-i18n="Get Unlimited <br>Access">Get Unlimited <br>Access</h1>
+      <div class="toolbar">
+        <div class="toolbar__carts">
+          <a href="https://apple.com/" class="toolbar__cart">
+            <img class="toolbar__img" src="/src/images/cart-bg1.webp"   srcset="/src/images/cart-bg1@2x.webp 2x, /src/images/cart-bg1@3x.webp 3x"  alt="cart1"/>
+            <div class="toolbar__title" data-i18n="Unlimited Art <br>Creation">Unlimited Art <br>Creation</div>
+          </a>
+          <a href="https://google.com/" class="toolbar__cart">
+            <img class="toolbar__img" src="/src/images/cart-bg2.webp"   srcset="/src/images/cart-bg2@2x.webp 2x, /src/images/cart-bg2@3x.webp 3x"  alt="cart2"/>
+            <div class="toolbar__title" data-i18n="Exclusive <br>Styles">Exclusive <br>Styles</div>
+          </a>
+          <a href="https://apple.com/" class="toolbar__cart">
+            <img class="toolbar__img" src="/src/images/cart-bg3.webp"   srcset="/src/images/cart-bg3@2x.webp 2x, /src/images/cart-bg3@3x.webp 3x"  alt="cart3"/>
+            <div class="toolbar__title" data-i18n="Magic Avatars <br>With 20% Off">Magic Avatars <br>With 20% Off</div>
+          </a>
+        </div> 
+        <div class="toolbar__offers">
+          <a href="#" class="toolbar__offer offer btn btn--primary">
+            <div class="offer__titles">
+              <div class="offer__title" data-i18n="YEARLY ACCESS">YEARLY ACCESS</div>
+              <div class="offer__subtitle" data-i18n="Just {{price}} per year">Just $39.99 per year</div>
+            </div>
+            <div class="offer__pricing">
+              <div class="offer__label">
+                <span></span>
+                <div data-i18n="BEST OFFER">BEST OFFER</div>
+              </div>
+              <div class="offer__price" data-i18n="{{price}} <br>per week">$0.48 <br/>per week</div>
+            </div>
+          </a>
+          <a href="#" class="toolbar__offer offer btn btn--secondary">
+            <div class="offer__titles">
+              <div class="offer__title" data-i18n="WEEKLY ACCESS">WEEKLY ACCESS</div>
+            </div>
+            <div class="offer__pricing">
+              <div class="offer__price" data-i18n="{{price}} <br>per week">$6.99 <br/>per week</div>
+            </div>
+          </a>
+          <a href="#" class="toolbar__offer btn" data-i18n="Continue">Continue</a>
+        </div>
+      </div>
+    </div>
+    <div class="modal__footer footer">
+      <a href="#" class="footer__link" data-i18n="Terms of Use">Terms of Use</a>
+      <a href="#" class="footer__link" data-i18n="Privacy Policy">Privacy Policy</a>
+      <a href="#" class="footer__link" data-i18n="Restore">Restore</a>
+    </div>
+  </div>
+  <script>
+    const translations = {
+      en: {
+        "Get Unlimited <br>Access": "Get Unlimited <br>Access",
+        "Unlimited Art <br>Creation": "Unlimited Art <br>Creation",
+        "Exclusive <br>Styles": "Exclusive <br>Styles",
+        "Magic Avatars <br>With 20% Off": "Magic Avatars <br>With 20% Off",
+        "YEARLY ACCESS": "YEARLY ACCESS",
+        "BEST OFFER": "BEST OFFER",
+        "Just {{price}} per year": "Just {{price}} per year",
+        "WEEKLY ACCESS": "WEEKLY ACCESS",
+        "{{price}} <br>per week": "{{price}} <br>per week",
+        "Terms of Use": "Terms of Use",
+        "Privacy Policy": "Privacy Policy",
+        "Restore": "Restore",
+        "Continue": "Continue"
+      },
+      ja: {
+        "Get Unlimited <br>Access": "無制限アクセス<br>を入手",
+        "Unlimited Art <br>Creation": "アート作品を<br>無制限に創造",
+        "Exclusive <br>Styles": "特別な<br>スタイル",
+        "Magic Avatars <br>With 20% Off": "AIアバターが<br>20%オフ",
+        "YEARLY ACCESS": "年間アクセス",
+        "BEST OFFER": "ベストオファー",
+        "Just {{price}} per year": "わずか{{price}}/年",
+        "WEEKLY ACCESS": "週ごとのアクセス",
+        "{{price}} <br>per week": "{{price}}/週<br>",
+        "Terms of Use": "利用規約",
+        "Privacy Policy": "プライバシーポリシー",
+        "Restore": "復元する",
+        "Continue": "続行する"
+      },
+      pt: {
+        "Get Unlimited <br>Access": "Obtenha Acesso <br>Ilimitado",
+        "Unlimited Art <br>Creation": "Criação de Arte <br>Ilimitada",
+        "Exclusive <br>Styles": "Estilos <br>Exclusivos",
+        "Magic Avatars <br>With 20% Off": "20% de Desconto em <br>Avatares de IA",
+        "YEARLY ACCESS": "ACESSO ANUAL",
+        "BEST OFFER": "MELHOR OFERTA",
+        "Just {{price}} per year": "Apenas {{price}} por ano",
+        "WEEKLY ACCESS": "ACESSO SEMANAL",
+        "{{price}} <br>per week": "{{price}} <br>por semana",
+        "Terms of Use": "Termos de Uso",
+        "Privacy Policy": "Política de Privacidade",
+        "Restore": "Restaurar",
+        "Continue": "Continuar"
+      },
+      es: {
+        "Get Unlimited <br>Access": "Obtén acceso <br>ilimitado",
+        "Unlimited Art <br>Creation": "Ilimitada creación <br>de arte",
+        "Exclusive <br>Styles": "Estilos <br>exclusivos",
+        "Magic Avatars <br>With 20% Off": "20 % de descuento en <br>avatares de IA",
+        "YEARLY ACCESS": "ACCESO ANUAL",
+        "BEST OFFER": "MEJOR OFERTA",
+        "Just {{price}} per year": "Solo {{price}} por año",
+        "WEEKLY ACCESS": "ACCESO SEMANAL",
+        "{{price}} <br>per week": "{{price}} <br>por semana",
+        "Terms of Use": "Términos de uso",
+        "Privacy Policy": "Política de privacidad",
+        "Restore": "Restaurar",
+        "Continue": "Continuar"
+      },
+      fr: {
+        "Get Unlimited <br>Access": "Obtenez un accès <br>illimité",
+        "Unlimited Art <br>Creation": "Création artistique <br>illimitée",
+        "Exclusive <br>Styles": "Styles <br>exclusifs",
+        "Magic Avatars <br>With 20% Off": "20&nbsp;% de réduction <br>sur les avatars IA",
+        "YEARLY ACCESS": "ACCÈS ANNUEL",
+        "BEST OFFER": "MEILLEURE OFFRE",
+        "Just {{price}} per year": "Seulement {{price}} par an",
+        "WEEKLY ACCESS": "ACCÈS HEBDOMADAIRE",
+        "{{price}} <br>per week": "{{price}} <br>par semaine",
+        "Terms of Use": "Conditions d’utilisation",
+        "Privacy Policy": "Politique de confidentialité",
+        "Restore": "Restaurer",
+        "Continue": "Continuer"
+      },
+      de: {
+        "Get Unlimited <br>Access": "Erhalten Sie unbegrenzten <br>Zugriff",
+        "Unlimited Art <br>Creation": "Unbegrenzte <br>Kunstschaffung",
+        "Exclusive <br>Styles": "Exklusive <br>Stile",
+        "Magic Avatars <br>With 20% Off": "20 % Rabatt auf <br>KI-Avatare",
+        "YEARLY ACCESS": "JÄHRLICHER ZUGRIFF",
+        "BEST OFFER": "BESTES ANGEBOT",
+        "Just {{price}} per year": "Nur {{price}} pro Jahr",
+        "WEEKLY ACCESS": "WÖCHENTLICHER ZUGRIFF",
+        "{{price}} <br>per week": "{{price}} <br>pro Woche",
+        "Terms of Use": "Nutzungsbedingungen",
+        "Privacy Policy": "Datenschutzrichtlinie",
+        "Restore": "Wiederherstellen",
+        "Continue": "Weiter"
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initLanguage();
+    });
+
+    function getLanguage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+      if (langParam && translations[langParam]) {
+        document.documentElement.setAttribute('lang', langParam);
+        return langParam;
+      }
+
+      const systemLang = window.navigator.language || window.navigator.userLanguage;
+      const baseLang = systemLang.split('-')[0];
+
+      if (translations[baseLang]) {
+        return baseLang;
+      }
+
+      return 'en';
+    }
+
+    function initLanguage() {
+      const lang = getLanguage();
+      const elements = document.querySelectorAll('[data-i18n]');
+      const t = translations[lang];
+      elements.forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (t[key]) {
+          const match = element.innerHTML.match(/(\$[\d.]+)/);
+          const newText = match ? t[key].replace("{{price}}", match[1]) : t[key];
+          element.innerHTML = newText;
+        }
+      });
+    }
+  </script>
+</body>
+
+</html>
