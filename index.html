@@ -5,64 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Promo Banner</title>
   <style>
-    @font-face {
-      font-family: 'SF Pro Display';
-      src: url('src/fonts/SF-Pro-Display-Regular.otf') format('opentype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'SF Pro Heavy';
-      src: url('src/fonts/SF-Pro-Display-Heavy.otf') format('opentype');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'SF Pro Text';
-      src: url('src/fonts/SFProText-Regular.ttf') format('truetype');
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'Roboto';
-      src: url('src/fonts/Roboto-Bold.ttf') format('truetype');
-      font-weight: 700;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'SF Pro Display';
-      src: url('src/fonts/SF-Pro-Display-Thin.otf') format('opentype');
-      font-weight: 100;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'SF Pro Display';
-      src: url('src/fonts/SF-Pro-Display-Semibold.otf') format('opentype');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: 'SF Pro Text';
-      src: url('src/fonts/SFProText-Semibold.ttf') format('truetype');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
-    }
-  </style>
-
-  <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -136,11 +78,10 @@
       --footer-link-fz: 13px;
 
       color: var(--color-light);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro", "SF Pro Heavy", "SF Pro Display", "SF Pro Text", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
     }
 
     .btn {
-      font-family: "SF Pro Text";
       font-weight: 600;
       display: flex;
       align-items: center;
@@ -244,7 +185,6 @@
     }
 
     .modal__title {
-      font-family: "SF Pro Heavy";
       font-size: var(--title-fz);
       font-weight: 900;
       line-height: var(--title-lh);
@@ -287,13 +227,11 @@
     }
 
     .toolbar__title {
-      font-family: "SF Pro Text";
       font-weight: 400;
       position: relative;
     }
 
     .offer {
-      font-family: "SF Pro Display";
       font-weight: 400;
       justify-content: space-between;
       font-size: var(--offer-fz);
@@ -312,7 +250,6 @@
     }
 
     .offer__title {
-      font-family: "SF Pro Display";
       text-transform: uppercase;
       font-weight: 600;
       color: var(--color-light);
@@ -325,7 +262,7 @@
     }
 
     .offer__label {
-      font-family: Roboto;
+      font-family: Roboto, sans-serif;
       text-transform: uppercase;
       position: absolute;
       color: var(--color-light);
@@ -401,7 +338,6 @@
     }
 
     .footer__link {
-      font-family: "SF Pro Display";
       font-weight: 100;
       font-size: var(--footer-link-fz);
       color: #55535e;
