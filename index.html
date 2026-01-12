@@ -21,6 +21,10 @@
       background-color: #ffffff;
     }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
     a {
       text-decoration: none;
       color: inherit;
@@ -36,17 +40,9 @@
       --color-grey1: rgba(255, 255, 255, 0.3);
       --color-grey2: rgba(255, 255, 255, 10.16%);
       --color-black: #070b33;
+      --color-black2: #141131;
       --color-light: #ffffff;
       --color-light2: #ffffff70;
-
-      --bg-color-primary: var(--color-grey2);
-      --bg-color-primary-active: var(--color-grey1);
-
-      --bg-color-secondary: var(--color-grey1);
-      --bg-color-secondary-active: var(--color-grey2);
-
-      --bg-color-tertiary: var(--color-light);
-      --bg-color-tertiary-active: var(--color-light);
 
       --btn-height: 56px;
       --btn-mt: 8px;
@@ -72,13 +68,14 @@
       --offer-label-width: 117px;
       --offer-titles-mb: 0;
       --offer-fz: 16px;
+      --offer-label-span-before-top: 1px;
+      --offer-label-span-after-top: 2px;
 
       --footer-margin-top: 12px;
       --footer-margin-x: -14.5px;
       --footer-link-fz: 13px;
 
       color: var(--color-light);
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro", sans-serif;
     }
 
     .btn {
@@ -103,38 +100,36 @@
     }
 
     .btn--primary {
-      border-color: var(--bg-color-primary);
-      background-color: var(--bg-color-primary);
+      border-color: var(--color-light);
+      background-color: var(--color-grey1);
+      color: var(--color-light2);
     }
 
     .btn--primary:active,
-    .btn--primary:hover {
-      border-color: var(--color-light);
-      background-color: var(--bg-color-primary-active);
+    .btn--primary.active {
+      border-color: var(--color-grey2);
+      background-color: var(--color-grey2);
+      color: var(--color-light2);
+
     }
 
-    .btn--primary:active .offer__label,
-    .btn--primary:active .offer__label:before,
-    .btn--primary:hover .offer__label,
-    .btn--primary:hover .offer__label:before {
+    .btn--primary.active .offer__label {
+      background: linear-gradient(90deg, #bc1fef 0%, #0035ff 100%);
       border-color: var(--color-light);
-      background: var(--color-light);
-      color: var(--color-black);
+      color: var(--color-light);
     }
 
-    .btn--primary:hover .offer__label span {
+    .btn--primary.active .offer__label:before {
+      background: linear-gradient(to right, #00b5ff 0%, #632af7 53%, #ff96f4 100%);
+      border-color: var(--color-light);
+    }
+
+    .btn--primary.active .offer__label span {
+      display: block;
+    }
+
+    .btn--primary .offer__label span {
       display: none;
-    }
-
-    .btn--secondary {
-      border-color: var(--color-light);
-      background-color: var(--bg-color-secondary);
-    }
-
-    .btn--secondary:active,
-    .btn--secondary:hover {
-      border-color: var(--bg-color-secondary-active);
-      background-color: var(--bg-color-secondary-active);
     }
 
     .modal {
@@ -255,8 +250,6 @@
       color: var(--color-light);
     }
 
-    .offer__subtitle {}
-
     .offer__pricing {
       min-width: var(--offer-pricing-width);
     }
@@ -265,15 +258,17 @@
       font-family: Roboto, sans-serif;
       text-transform: uppercase;
       position: absolute;
-      color: var(--color-light);
       border-radius: 100px;
       min-width: var(--offer-label-width);
       text-align: center;
       right: 24px;
       top: -10px;
-      background: linear-gradient(90deg, #bc1fef 0%, #0035ff 100%);
+      color: var(--color-black2);
       font-weight: 700;
       font-size: 13px;
+      border-color: var(--color-light);
+      background: var(--color-light);
+      padding: 0 8px;
     }
 
     .offer__label:before {
@@ -288,6 +283,8 @@
       z-index: -1;
       background: linear-gradient(to right, #00b5ff 0%, #632af7 53%, #ff96f4 100%);
       border-radius: inherit;
+      border-color: var(--color-light);
+      background: var(--color-light);
     }
 
     .offer__label span {
@@ -306,7 +303,7 @@
       background-repeat: no-repeat;
       display: block;
       position: absolute;
-      top: 0;
+      top: var(--offer-label-span-before-top);
       right: 100%;
       width: 128px;
       height: 1px;
@@ -319,7 +316,7 @@
       background-repeat: no-repeat;
       display: block;
       position: absolute;
-      top: 2px;
+      top: var(--offer-label-span-after-top);
       left: 100%;
       width: 24.5px;
       height: calc(var(--btn-height) / 2.015);
@@ -347,6 +344,8 @@
     :lang(ja) {
       --btn-px: 1px;
       --offer-titles-mb: -3px;
+      --offer-label-span-before-top: -2px;
+      --offer-label-span-after-top: -2px;
     }
 
     :lang(de) {
@@ -370,6 +369,7 @@
         --cart-height: 125px;
         --cart-radius: 13px;
         --offer-pricing-width: 33.5%;
+        --title-fz: 36px;
       }
 
       .modal {
@@ -433,6 +433,7 @@
 
         --offer-pricing-width: 33.5%;
         --offer-label-width: 119px;
+        --offer-label-span-before-top: 1px;
       }
 
       .modal {
@@ -442,10 +443,13 @@
       :root :lang(ja) {
         --mb-app: 5px;
         --toolbar-carts-mb: 26px;
+        --offer-label-span-before-top: -2px;
+        --offer-label-span-after-top: -2px;
       }
 
       :root :lang(fr) {
         --mt-content: 49px;
+
       }
 
       :root :lang(de) {
@@ -486,14 +490,21 @@
         --mb-app: 20px;
         --mt-content: 137px;
         --toolbar-carts-template-width: 106px;
+        --offer-label-span-before-top: 1px;
       }
 
-      :lang(ja) .offer__label span:after {
-        top: 0;
+      :root :lang(ja) {
+        --offer-label-span-after-top: 0;
+        --offer-label-span-before-top: -1px;
       }
 
       :root :lang(fr) {
         --mt-content: 140px;
+        /*--offer-label-width: 130px;*/
+      }
+
+      :root :lang(pt) {
+        --offer-label-span-before-top: 1px;
       }
     }
 
@@ -512,21 +523,21 @@
       <h1 class="modal__title" data-i18n="Get Unlimited <br>Access">Get Unlimited <br>Access</h1>
       <div class="toolbar">
         <div class="toolbar__carts">
-          <a href="https://apple.com/" class="toolbar__cart">
+          <div class="toolbar__cart">
             <img class="toolbar__img" src="./src/images/cart-bg1.webp"   srcset="./src/images/cart-bg1@2x.webp 2x, ./src/images/cart-bg1@3x.webp 3x"  alt="cart1"/>
             <div class="toolbar__title" data-i18n="Unlimited Art <br>Creation">Unlimited Art <br>Creation</div>
-          </a>
-          <a href="https://google.com/" class="toolbar__cart">
+          </div>
+          <div class="toolbar__cart">
             <img class="toolbar__img" src="./src/images/cart-bg2.webp"   srcset="./src/images/cart-bg2@2x.webp 2x, ./src/images/cart-bg2@3x.webp 3x"  alt="cart2"/>
             <div class="toolbar__title" data-i18n="Exclusive <br>Styles">Exclusive <br>Styles</div>
-          </a>
-          <a href="https://apple.com/" class="toolbar__cart">
+          </div>
+          <div class="toolbar__cart">
             <img class="toolbar__img" src="./src/images/cart-bg3.webp"   srcset="./src/images/cart-bg3@2x.webp 2x, ./src/images/cart-bg3@3x.webp 3x"  alt="cart3"/>
             <div class="toolbar__title" data-i18n="Magic Avatars <br>With 20% Off">Magic Avatars <br>With 20% Off</div>
-          </a>
+          </div>
         </div> 
         <div class="toolbar__offers">
-          <a href="#" class="toolbar__offer offer btn btn--primary">
+          <a href="https://apple.com/" class="toolbar__offer offer btn btn--primary active">
             <div class="offer__titles">
               <div class="offer__title" data-i18n="YEARLY ACCESS">YEARLY ACCESS</div>
               <div class="offer__subtitle" data-i18n="Just {{price}} per year">Just $39.99 per year</div>
@@ -539,7 +550,7 @@
               <div class="offer__price" data-i18n="{{price}} <br>per week">$0.48 <br/>per week</div>
             </div>
           </a>
-          <a href="#" class="toolbar__offer offer btn btn--secondary">
+          <a href="https://google.com/" class="toolbar__offer offer btn btn--primary">
             <div class="offer__titles">
               <div class="offer__title" data-i18n="WEEKLY ACCESS">WEEKLY ACCESS</div>
             </div>
@@ -547,7 +558,7 @@
               <div class="offer__price" data-i18n="{{price}} <br>per week">$6.99 <br/>per week</div>
             </div>
           </a>
-          <a href="#" class="toolbar__offer btn" data-i18n="Continue">Continue</a>
+          <a href="https://apple.com/#" class="toolbar__offer btn" data-i18n="Continue" id="btnContinue">Continue</a>
         </div>
       </div>
     </div>
@@ -560,6 +571,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       initLanguage();
+      initChangeOffer();
     });
 
     function getLanguage() {
@@ -601,7 +613,22 @@
         console.error("Ошибка загрузки перевода:", error);
       }
     }
+
+    function initChangeOffer() {
+      const offers = document.querySelectorAll('.offer');
+      const btnContinue = document.getElementById('btnContinue');
+      if(!offers.length && !btnContinue) return
+      offers.forEach(offer => {
+        offer.addEventListener('click', function (e) {
+          e.preventDefault();
+          offers.forEach(el => el.classList.remove('active'));
+          this.classList.add('active');
+          btnContinue.href = this.href;
+        });
+      });
+    }
   </script>
+
 </body>
 
 </html>
